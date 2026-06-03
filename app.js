@@ -5,18 +5,24 @@ async function carregarDashboard() {
 
   try {
 
-    const resposta = await fetch(API + "?acao=dashboard");
+    console.log("Iniciando");
 
-    const dados = await resposta.json();
+    const resposta =
+      await fetch(API + "?acao=dashboard");
+
+    console.log("Resposta recebida");
+
+    const dados =
+      await resposta.json();
+
+    console.log(dados);
 
     document.getElementById("clientes").innerText =
-      dados.clientes || 0;
+      dados.clientes;
 
   } catch (erro) {
 
-    console.error("Erro:", erro);
-
-    document.getElementById("clientes").innerText = "Erro";
+    console.error(erro);
 
   }
 
