@@ -1,60 +1,15 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  display: flex;
-  background: #f4f6f9;
-}
+const API_URL = "COLE_AQUI_SUA_URL_DO_APPS_SCRIPT";
 
-.sidebar {
-  width: 220px;
-  background: #1f4e79;
-  color: white;
-  height: 100vh;
-  padding: 20px;
-}
+fetch(API_URL)
+  .then(res => res.json())
+  .then(data => {
 
-.sidebar h2 {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
+    document.getElementById("clientes").innerText = data.clientes;
+    document.getElementById("sinistros").innerText = data.sinistros;
+    document.getElementById("transportadores").innerText = data.transportadores;
+    document.getElementById("planos").innerText = data.planos;
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar ul li {
-  padding: 10px 0;
-  cursor: pointer;
-}
-
-.main {
-  flex: 1;
-  padding: 20px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.card h3 {
-  margin: 0;
-  font-size: 14px;
-  color: #666;
-}
-
-.card p {
-  font-size: 28px;
-  margin: 10px 0 0;
-  font-weight: bold;
-}
+  })
+  .catch(err => {
+    console.log("Erro ao carregar dados:", err);
+  });
